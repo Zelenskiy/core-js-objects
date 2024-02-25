@@ -460,12 +460,18 @@ class CssSelector {
   stringify() {
     const parts = this.selectorParts;
     return `
-      ${parts.element}${parts.id}${parts.classes.join('')}${parts.attributes.join('')}${parts.pseudoClasses.join('')}${parts.pseudoElement}`;
+      ${parts.element}${parts.id}${parts.classes.join(
+        ''
+      )}${parts.attributes.join('')}${parts.pseudoClasses.join('')}${
+        parts.pseudoElement
+      }`;
   }
 
   validateUnique(propertyName) {
     if (this.selectorParts[propertyName] !== '') {
-      throw new Error('Element, id, and pseudo-element should not occur more than one time inside the selector');
+      throw new Error(
+        'Element, id, and pseudo-element should not occur more than one time inside the selector'
+      );
     }
   }
 
