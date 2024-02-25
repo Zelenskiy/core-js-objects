@@ -136,13 +136,18 @@ function makeImmutable(obj) {
  *    makeWord({ H:[0], e: [1], l: [2, 3, 8], o: [4, 6], W:[5], r:[7], d:[9]}) => 'HelloWorld'
  */
 function makeWord(lettersObject) {
-  let word = '';
+  const word = [];
   Object.keys(lettersObject).forEach((letter) => {
-    word += lettersObject[letter]
-      .map((position) => letter.repeat(position + 1))
-      .join('');
+    lettersObject[letter].forEach((num) => {
+      word[num] = letter;
+    });
   });
-  return word;
+  let result = '';
+  word.forEach((item) => {
+    result += item;
+  });
+
+  return result;
 }
 
 /**
